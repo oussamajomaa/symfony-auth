@@ -15,15 +15,15 @@
            <li class="nav-item ">
                <a class="nav-link " href="{{ path('app_login') }}">Connexion</a>
            </li>
-           <h1>bonjour {{ app.user.username }}</h1>
+           
            <li class="nav-item ">
                <a class="nav-link " href="{{ path('app_register') }}">Inscription</a>
            </li>
             {% endif %}
             
-
-		
-			
+            {% if app.user %}
+            <h1>bonjour {{ app.user.username }}</h1>
+			{% endif %}
 		</ul>
 	</div>
 </nav>
