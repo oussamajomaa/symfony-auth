@@ -3,5 +3,9 @@
 {% block title %}Hello MainController!{% endblock %}
 
 {% block body %}
+{% if app.user %}
+
+    <h1 class="bg-warning text-center m-5">{{ app.user.email }}</h1>
+{% endif %}
 
 {% endblock %}
