@@ -1,0 +1,10 @@
+<div class="container">
+{{ form_start(form) }}
+    {{ form_row(form.name,{'attr':{'class':'form-control'}}) }}
+    {{ form_row(form.prix,{'attr':{'class':'form-control'}}) }}
+    {{ form_row(form.categorie,{'attr':{'class':'form-control'}}) }}
+    <button class="btn btn-success mt-1"><i class="far fa-save"></i></button>
+    <a class="btn btn-info mt-1" href="{{ path('produit_index') }}"><i class="fas fa-undo-alt"></i></a>
+    </div>
+{{ form_end(form) }}
+</div>
