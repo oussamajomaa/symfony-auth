@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+<div class="container">
+
+
+    <h1>Table de produit</h1>
+
+    <table class="table ">
+        <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Prix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <pre>
+                {{ dump(is_granted('ROLE_SUPER_ADMIN')) }}
+            </pre>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.name }}</td>
+                <td>{{ produit.prix }}</td>
+                <td class="d-flex">
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <a class="btn btn-success mr-1" href="{{ path('produit_show', {'id': produit.id}) }}"><i class="fas fa-eye"></i></a>
+                        <a class="btn btn-success" href="{{ path('produit_edit', {'id': produit.id}) }}"><i class="fas fa-edit"></i></a>
+                        {{ include('produit/_delete_form.html.twig') }}
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="btn btn-success mr-1" href="{{ path('produit_show', {'id': produit.id}) }}"><i class="fas fa-eye"></i></a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <a class="btn btn-primary" href="{{ path('produit_new') }}"><i class="fas fa-plus-square"></i></a>
+
+</div>
+{% endblock %}
